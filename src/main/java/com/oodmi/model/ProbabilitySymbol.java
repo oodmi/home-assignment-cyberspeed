@@ -2,8 +2,8 @@ package com.oodmi.model;
 
 import java.util.Map;
 
-public class ProbabilitySymbol {
-    private int column;
-    private int row;
-    private Map<String, Integer> symbols;
+public record ProbabilitySymbol(
+        Integer column,
+        Integer row,
+        Map<String, Integer> symbols) {
 }

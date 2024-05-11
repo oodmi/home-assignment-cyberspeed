@@ -1,7 +1,11 @@
 package com.oodmi.model;
 
-public class Symbol {
-    private double rewardMultiplier;
-    public Type type;
-    private Impact impact;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public record Symbol(
+        @JsonProperty("reward_multiplier")
+        Double rewardMultiplier,
+        Integer extra,
+        Type type,
+        Impact impact) {
 }
