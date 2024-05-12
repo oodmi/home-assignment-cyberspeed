@@ -6,7 +6,7 @@ import com.oodmi.model.WinCombination;
 
 import java.util.*;
 
-import static com.oodmi.enums.Type.standard;
+import static com.oodmi.enums.Type.STANDARD;
 
 public class WinChecker {
 
@@ -24,7 +24,7 @@ public class WinChecker {
         List<String> allCells = matrix.stream().flatMap(Collection::stream).toList();
 
         config.symbols().forEach((k, v) -> {
-            if (standard.equals(v.type())) {
+            if (STANDARD.equals(v.type())) {
                 int count = (int) allCells.stream().filter(it -> it.equals(k)).count();
                 if (sameSymbolsCombinations.containsKey(count)) {
                     Map.Entry<String, WinCombination> winCombinationEntry = sameSymbolsCombinations.get(count);

@@ -1,7 +1,12 @@
 package com.oodmi.enums;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public enum Impact {
-    multiply_reward,
-    extra_bonus,
-    miss
+    @JsonProperty("multiply_reward")
+    MULTIPLY_REWARD,
+    @JsonProperty("extra_bonus")
+    EXTRA_BONUS,
+    @JsonProperty("miss")
+    MISS
 }

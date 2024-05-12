@@ -1,6 +1,10 @@
 package com.oodmi.enums;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public enum Type {
-    standard,
-    bonus
+    @JsonProperty("standard")
+    STANDARD,
+    @JsonProperty("bonus")
+    BONUS
 }

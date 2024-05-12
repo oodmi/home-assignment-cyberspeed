@@ -5,6 +5,7 @@ import com.oodmi.model.Configuration;
 import com.oodmi.model.InputParams;
 
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
 
@@ -19,7 +20,7 @@ public class InputParser {
             throw new IllegalArgumentException("Please use the following arguments: --config and --betting-amount ");
         }
 
-        var argsMap = Map.of(
+        Map<String, String> argsMap = Map.of(
                 args[0], args[1],
                 args[2], args[3]
         );
@@ -28,15 +29,15 @@ public class InputParser {
             throw new IllegalArgumentException("Please use the following arguments: --config and --betting-amount ");
         }
 
-        var config = parseConfig(argsMap.get(CONFIG_KEY));
-        var bettingAmount = parseBettingAmount(argsMap.get(BETTING_AMOUNT_KEY));
+        Configuration config = parseConfig(argsMap.get(CONFIG_KEY));
+        Integer bettingAmount = parseBettingAmount(argsMap.get(BETTING_AMOUNT_KEY));
 
         return new InputParams(config, bettingAmount);
     }
 
     private static Configuration parseConfig(String stringPath) {
         try {
-            var path = Paths.get(stringPath);
+            Path path = Paths.get(stringPath);
             String content = String.join("\n", Files.readAllLines(path));
             return JsonObjectMapper.getInstance().toObject(content, Configuration.class);
         } catch (Exception e) {

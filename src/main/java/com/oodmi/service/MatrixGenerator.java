@@ -20,11 +20,14 @@ public class MatrixGenerator {
         int numColumns = config.columns();
         Random random = new Random();
 
+        boolean bonus = true;
+
         for (int i = 0; i < numRows; i++) {
             List<String> row = new ArrayList<>();
 
             for (int j = 0; j < numColumns; j++) {
                 List<String> allSymbols = new ArrayList<>();
+                List<String> bonusSymbols = new ArrayList<>();
 
                 Map<String, Integer> symbols = probabilities.getOrDefault(i + ":" + j, new HashMap<>());
                 symbols.forEach((k, v) -> {
@@ -35,12 +38,18 @@ public class MatrixGenerator {
 
                 config.probabilities().bonusSymbols().symbols().forEach((k, v) -> {
                     for (int l = 0; l < v; l++) {
-                        allSymbols.add(k);
+                        bonusSymbols.add(k);
                     }
                 });
 
-                int randomProbability = random.nextInt(allSymbols.size());
-                row.add(allSymbols.get(randomProbability));
+                if (random.nextInt(numColumns * numRows) < numColumns * numRows / 4 && bonus) {
+                    int randomProbability = random.nextInt(bonusSymbols.size());
+                    row.add(bonusSymbols.get(randomProbability));
+                    bonus = false;
+                } else {
+                    int randomProbability = random.nextInt(allSymbols.size());
+                    row.add(allSymbols.get(randomProbability));
+                }
             }
 
             matrix.add(row);
