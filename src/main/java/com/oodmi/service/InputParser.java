@@ -35,7 +35,7 @@ public class InputParser {
         return new InputParams(config, bettingAmount);
     }
 
-    private static Configuration parseConfig(String stringPath) {
+    public static Configuration parseConfig(String stringPath) {
         try {
             Path path = Paths.get(stringPath);
             String content = String.join("\n", Files.readAllLines(path));
