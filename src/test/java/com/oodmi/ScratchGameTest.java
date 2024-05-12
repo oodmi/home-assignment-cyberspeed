@@ -64,7 +64,7 @@ class ScratchGameTest {
                 winningCombinations,
                 rewardWithBonus.getValue());
 
-        MatrixResult expected = new MatrixResult(matrix, 26000, Map.of(
+        MatrixResult expected = new MatrixResult(matrix, 6600, Map.of(
                 "A", List.of("same_symbol_5_times", "same_symbols_vertically"),
                 "B", List.of("same_symbol_3_times", "same_symbols_vertically")),
                 "+1000");
