@@ -20,10 +20,14 @@ public class RewardCalculation {
 
             Symbol symbol = inputParams.config().symbols().get(s);
 
+            double symbolReward = inputParams.bettingAmount() * symbol.rewardMultiplier();
+
             for (String it : combinations) {
                 WinCombination winCombination = inputParams.config().winCombinations().get(it);
-                reward += winCombination.rewardMultiplier() * symbol.rewardMultiplier() * inputParams.bettingAmount();
+                symbolReward *= winCombination.rewardMultiplier();
             }
+
+            reward += symbolReward;
         }
 
         return reward;

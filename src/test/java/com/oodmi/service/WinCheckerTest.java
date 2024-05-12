@@ -11,7 +11,7 @@ class WinCheckerTest {
 
     @Test
     void checkWinningCombinationsTest() {
-        Configuration configuration = InputParser.parseConfig("config.json");
+        Configuration configuration = InputParser.parseConfig("src/test/resources/config.json");
         List<List<String>> matrix = List.of(
                 List.of("E", "E", "C"),
                 List.of("D", "E", "D"),
@@ -22,17 +22,17 @@ class WinCheckerTest {
 
         Assertions.assertEquals(Map.of(
                         "D", List.of("same_symbol_3_times"),
-                        "E", List.of("same_symbol_4_times")),
+                        "E", List.of("same_symbol_4_times", "same_symbols_vertically")),
                 winningCombinations);
     }
 
     @Test
     void checkNoWinningCombinationsTest() {
-        Configuration configuration = InputParser.parseConfig("config.json");
+        Configuration configuration = InputParser.parseConfig("src/test/resources/config.json");
         List<List<String>> matrix = List.of(
-                List.of("E", "E", "C"),
+                List.of("E", "A", "C"),
                 List.of("D", "E", "D"),
-                List.of("+1000", "E", "D")
+                List.of("+1000", "B", "F")
         );
 
         Map<String, List<String>> winningCombinations = WinChecker.checkWinningCombinations(matrix, configuration);

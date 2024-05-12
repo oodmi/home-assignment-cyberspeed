@@ -12,7 +12,7 @@ class RewardCalculationTest {
 
     @Test
     void calculateRewardTest() {
-        Configuration configuration = InputParser.parseConfig("config.json");
+        Configuration configuration = InputParser.parseConfig("src/test/resources/config.json");
 
         Double reward = RewardCalculation.calculateReward(Map.of(
                 "D", List.of("same_symbol_3_times"),
@@ -23,7 +23,7 @@ class RewardCalculationTest {
 
     @Test
     void applyBonusTest() {
-        Configuration configuration = InputParser.parseConfig("config.json");
+        Configuration configuration = InputParser.parseConfig("src/test/resources/config.json");
 
         Map<String, List<String>> winningCombinations = Map.of(
                 "D", List.of("same_symbol_3_times"),
