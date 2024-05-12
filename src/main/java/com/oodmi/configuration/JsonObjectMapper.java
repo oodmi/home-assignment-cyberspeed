@@ -14,6 +14,7 @@ public class JsonObjectMapper {
             .enable(MapperFeature.DEFAULT_VIEW_INCLUSION)
             .enable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES)
             .enable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
+            .enable(SerializationFeature.INDENT_OUTPUT)
             .build();
 
     private static JsonObjectMapper instance = null;
