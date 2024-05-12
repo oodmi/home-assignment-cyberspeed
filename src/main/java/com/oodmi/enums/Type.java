@@ -1,4 +1,4 @@
-package com.oodmi.model;
+package com.oodmi.enums;
 
 public enum Type {
     standard,

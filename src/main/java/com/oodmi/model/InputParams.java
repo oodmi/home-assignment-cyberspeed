@@ -1,6 +1,6 @@
 package com.oodmi.model;
 
 public record InputParams(
-        Config config,
+        Configuration config,
         Integer bettingAmount) {
 }

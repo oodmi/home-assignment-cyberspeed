@@ -7,16 +7,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-public class Main {
+public class ScratchGame {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ScratchGame.class);
 
     public static void main(String[] args) {
-        var inputParser = new InputParser();
-        var matrixGenerator = new MatrixGenerator();
-
-        var inputParams = inputParser.parse(args);
-        var matrixResult = matrixGenerator.generateMatrix(inputParams);
+        var inputParams = InputParser.parse(args);
+        var matrixResult = MatrixGenerator.generateMatrix(inputParams.config());
 
         LOGGER.info("{}", JsonObjectMapper.getInstance().asString(matrixResult));
     }

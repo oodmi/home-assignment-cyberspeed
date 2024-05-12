@@ -1,6 +1,8 @@
 package com.oodmi.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.oodmi.enums.Group;
+import com.oodmi.enums.When;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.oodmi.model;
+package com.oodmi.enums;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

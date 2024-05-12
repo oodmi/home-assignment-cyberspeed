@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-public record Probabilities(
+public record Probability(
         @JsonProperty("standard_symbols")
         List<ProbabilitySymbol> standardSymbols,
         @JsonProperty("bonus_symbols")

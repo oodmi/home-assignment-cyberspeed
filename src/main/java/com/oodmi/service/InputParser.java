@@ -1,7 +1,7 @@
 package com.oodmi.service;
 
 import com.oodmi.configuration.JsonObjectMapper;
-import com.oodmi.model.Config;
+import com.oodmi.model.Configuration;
 import com.oodmi.model.InputParams;
 
 import java.nio.file.Files;
@@ -13,7 +13,7 @@ public class InputParser {
     private static final String CONFIG_KEY = "--config";
     private static final String BETTING_AMOUNT_KEY = "--betting-amount";
 
-    public InputParams parse(String[] args) {
+    public static InputParams parse(String[] args) {
 
         if (args.length != 4) {
             throw new IllegalArgumentException("Please use the following arguments: --config and --betting-amount ");
@@ -34,17 +34,17 @@ public class InputParser {
         return new InputParams(config, bettingAmount);
     }
 
-    private Config parseConfig(String stringPath) {
+    private static Configuration parseConfig(String stringPath) {
         try {
             var path = Paths.get(stringPath);
             String content = String.join("\n", Files.readAllLines(path));
-            return JsonObjectMapper.getInstance().toObject(content, Config.class);
+            return JsonObjectMapper.getInstance().toObject(content, Configuration.class);
         } catch (Exception e) {
             throw new IllegalArgumentException("Failed to parse file: " + stringPath, e);
         }
     }
 
-    private Integer parseBettingAmount(String bettingAmount) {
+    private static Integer parseBettingAmount(String bettingAmount) {
         try {
             return Integer.valueOf(bettingAmount);
         } catch (Exception e) {
